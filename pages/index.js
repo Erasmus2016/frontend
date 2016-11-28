@@ -1,6 +1,15 @@
 import React from 'react';
-import Test from '../components/Test';
+import Intl from '../components/Intl';
+import TranslationExample from '../components/TranslationExample';
+import Helmet from 'react-helmet';
 
 export default () => (
-  <Test />
+  <Intl lang="en">
+    <div>
+      <Helmet
+        title="Test"
+      />
+      <TranslationExample />
+    </div>
+  </Intl>
 )
