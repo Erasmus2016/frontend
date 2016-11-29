@@ -8,8 +8,7 @@ import cs from 'react-intl/locale-data/cs';
 addLocaleData([...en, ...de, ...cs]);
 
 /*
-  We will load translation files via import, but it doesn't work in 1.1.2
-  https://github.com/zeit/next.js/pull/298
+  We will import translations from json file.. later
 */
 
 export default class Intl extends React.Component {
