@@ -1,5 +1,7 @@
+import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
+import { connect } from 'react-redux';
 import en from 'react-intl/locale-data/en';
 import de from 'react-intl/locale-data/de';
 import cs from 'react-intl/locale-data/cs';
@@ -13,15 +15,15 @@ const langs = {
 // https://github.com/yahoo/react-intl/wiki/API#addlocaledata
 addLocaleData([...en, ...de, ...cs]);
 
-export default class Intl extends React.Component {
+export default class Intl extends Component {
 
   static propTypes = {
-    lang: PropTypes.string.isRequired,
     children: PropTypes.element.isRequired
   }
 
   render() {
-    const { lang, children } = this.props;
+    const { children } = this.props;
+    const lang = 'en';
 
     return (
       <IntlProvider

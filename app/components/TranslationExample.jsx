@@ -1,7 +1,8 @@
+import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { connect } from 'react-redux';
-import { edit } from './actions';
+import { edit } from '../redux/actions';
 
 const messages = defineMessages({
   b: {
@@ -10,7 +11,7 @@ const messages = defineMessages({
   }
 });
 
-class TranslationExample extends React.Component {
+class TranslationExample extends Component {
 
   render() {
     return (
