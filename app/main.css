@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'BeonMedium';
+  src: url('assets/beon-webfont.woff') format('woff'), url('assets/beon-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: BeonMedium;
+  background-image: url(assets/background.png);
+  background-position: center;
+  background-size: contain;
+  margin: 0;
+}
+
+.header {
+  text-align: center;
+  font-size: 10vh;
+  color: pink;
+}
+
+.header .text {
+  text-shadow: -1vh -0.2vh 0.1vh #000000;
+  color: #ffcef5;
+}
+
+.header .glowbox {
+  box-shadow: 0px 0px 11vh 9vh rgba(191, 72, 171, 0.36);
+  display: inline-block;
+  width: 24vw;
+  margin-left: -24vw;
+  position: relative;
+  top: -3vh;
+}
+
+
+
+.map {
+  position: absolute;
+  top: 10vh;
+  left: 50vw;
+  transform: translateX(-50%);
+}
+
+.map .field {
+  background-image: url(/assets/field_normal.png);
+  background-size: contain;
+  position: absolute;
+}
+
+.map .field.green {
+  background-image: url(/assets/field_green.png);
+}
+
+.map .field.pink {
+  background-image: url(/assets/field_pink.png);
+}
+
+.map .field.yellow {
+  background-image: url(/assets/field_yellow.png);
+}
+
+.map .field.blue {
+  background-image: url(/assets/field_blue.png);
+}
+
+
+.start {
+  position: absolute;
+  background-image: url(/assets/start.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}

@@ -7,19 +7,23 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from '../redux/reducer';
 import { changeLanguage } from '../redux/actions';
-
-require('./App.css');
+import Header from './Header';
+import Map from './Map';
+import map from './map';
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
 export default class App extends Component {
 
   render() {
+
+
     return (
       <Provider store={store}>
         <Intl>
           <div>
-            <TranslationExample />
+            <Header />
+            <Map data={map} />
           </div>
         </Intl>
       </Provider>
