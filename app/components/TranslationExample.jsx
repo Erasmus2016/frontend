@@ -13,12 +13,19 @@ const messages = defineMessages({
 
 class TranslationExample extends Component {
 
-  render() {
+    static contextTypes = {
+      emit: PropTypes.func
+    };
+
+    render() {
     return (
       <h1>
         <FormattedMessage {...messages.b} /><br />
         {this.props.edited}
-        <button onClick={this.props.edit}>
+        <button onClick={() => {
+            this.context.emit('abc', {a: 'b'})
+            this.props.edit()
+        }}>
           edit
         </button>
       </h1>
