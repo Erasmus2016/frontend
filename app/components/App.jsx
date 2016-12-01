@@ -12,7 +12,7 @@ import Header from './Header';
 import Map from './Map';
 import map from './map';
 
-require('./App.css');
+//require('./App.css');
 
 const store = createStore(reducer, applyMiddleware(thunk));
 
@@ -24,7 +24,7 @@ export default class App extends Component {
         <Intl>
           <div>
             <Header />
-              <SocketAdapter endpoint='http://localhost:1234'>
+              <SocketAdapter endpoint='http://188.68.58.185:5000'>
                   <Map data={map} />
                 <TranslationExample />
               </SocketAdapter>

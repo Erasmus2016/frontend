@@ -17,8 +17,11 @@ export default class SockerAdapter extends Component {
         //this.socket = io.connect(this.props.endpoint);
         super(props);
         this.socket = {
-            emit: (event, payload) => console.log(event, payload)
+            emit: (event, payload) => console.log(event, payload),
+            on: (event, callback) => console.log(event, callback)
         }
+
+        this.socket.on('')
     }
 
     getChildContext() {
@@ -34,4 +37,4 @@ export default class SockerAdapter extends Component {
     }
 }
 
-export default connect({}, {  });
+//export default connect({}, {  });
