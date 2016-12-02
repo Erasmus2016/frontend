@@ -15,6 +15,18 @@ const messages = defineMessages({
   categoryAll: {
     id: 'join.category.all',
     defaultMessage: 'All'
+  },
+  color: {
+    id: 'join.form.color',
+    defaultMessage: 'Color'
+  },
+  category: {
+    id: 'join.form.category',
+    defaultMessage: 'Category'
+  },
+  nick: {
+    id: 'join.form.nick',
+    defaultMessage: 'Nick'
   }
 });
 
@@ -26,6 +38,7 @@ class JoinScreen extends Component {
     name: PropTypes.string,
     color: PropTypes.string,
     avalibleColors: PropTypes.array.isRequired,
+    status: PropTypes.string.isRequired,
     joinTheServer: PropTypes.func.isRequired,
     joinSetColor: PropTypes.func.isRequired,
     joinSetName: PropTypes.func.isRequired,
@@ -39,6 +52,7 @@ class JoinScreen extends Component {
       name,
       color,
       avalibleColors,
+      status,
       joinTheServer,
       joinSetColor,
       joinSetName,
@@ -49,6 +63,7 @@ class JoinScreen extends Component {
       <div className="join">
         <div className="colors">
           <div style={{ display: 'inline-block' }}>
+            <div><FormattedMessage {...messages.color} />:</div>
             {colors.map((c) =>
               <div
                 key={c}
@@ -62,10 +77,14 @@ class JoinScreen extends Component {
             <div className="clear-both"/>
           </div>
           <form onSubmit={(e) => {e.preventDefault(); joinTheServer();}}>
-            <label>Nick: </label>
+            <label>
+              <FormattedMessage {...messages.nick} />:
+            </label>
             <input onChange={({ target: { value } }) => joinSetName(value)} />
             <br />
-            <label>Category: </label>
+            <label>
+              <FormattedMessage {...messages.category} />:
+            </label>
             <select
               onChange={({ target: { value } }) => joinSetCategory(value)}
               value={{category}}
@@ -75,7 +94,7 @@ class JoinScreen extends Component {
               </option>
             </select>
             <br />
-            <button type="submit" disabled={!color || !name}>
+            <button type="submit" disabled={!color || !name || status !== 'STAND'}>
               <FormattedMessage {...messages.login} />
             </button>
           </form>
@@ -90,5 +109,6 @@ export default injectIntl(connect(state => ({
   color: state.player.color,
   name: state.player.name,
   category: state.app.category,
-  avalibleColors: state.join.avalibleColors
+  avalibleColors: state.join.avalibleColors,
+  status: state.join.status
 }), { joinTheServer, joinSetColor, joinSetName, joinSetCategory })(JoinScreen));

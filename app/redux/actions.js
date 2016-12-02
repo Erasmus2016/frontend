@@ -4,6 +4,8 @@ export const JOIN_FORM_SET_NAME = 'JOIN_FORM_SET_NAME';
 export const JOIN_FORM_SET_CATEGORY = 'JOIN_FORM_SET_CATEGORY';
 export const DICE_IS_READY = 'DICE_IS_READY';
 export const DICE_IS_ROLLED = 'DICE_IS_ROLLED';
+export const EVENT_AVALIBLE_COLORS = 'EVENT_AVALIBLE_COLORS';
+
 export function joinTheServer() {
   return (dispatch, getState, { emit }) => {
     const { app: { lang, category }, player: { name, color } } = getState();
@@ -48,4 +50,13 @@ export function rollTheDice(){
     type: DICE_IS_ROLLED
   }
 
+}
+
+export function setAvalibleColors(colors) {
+  return {
+    type: EVENT_AVALIBLE_COLORS,
+    payload: {
+      colors
+    }
+  }
 }

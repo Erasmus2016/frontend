@@ -36,6 +36,9 @@ export default (state = new DefaultState, action) => {
 
     case actions.DICE_IS_ROLLED:
       return state.setIn(['app', 'category'], action.payload.category);
+
+    case actions.EVENT_AVALIBLE_COLORS:
+      return state.setIn(['join', 'avalibleColors'], action.payload.colors);
   }
 
   return state;

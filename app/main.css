@@ -172,6 +172,10 @@ body {
   color: #86587d;
 }
 
+.join form label {
+  margin-right: 1vh;
+}
+
 .dice {
   background-image: url(/assets/DICES.png);
   background-size: contain;

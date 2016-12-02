@@ -8,8 +8,9 @@ export default function connectSocketToStore(socket, store) {
     console.log('error');
   });
 
-  socket.on('available-colors', () => {
-    console.log('available-colors');
+  socket.on('available-colors', (colors) => {
+    console.log('available-colors', colors);
+    store.dispatch(setAvalibleColors(colors));
   });
 
   socket.on('map', () => {
