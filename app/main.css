@@ -90,14 +90,19 @@ body {
   position: absolute;
   top: 50vh;
   left: 50vw;
-  width: 50vw;
-  height: 50vh;
+  padding: 5vh;
   transform: translate(-50%, -50%);
   background-color: #e89dda;
+  text-align: center;
+  background-color: rgba(232, 157, 218, 0.55);
+  text-align: center;
+  box-shadow: 0px 0px 11vh 9vh rgba(191, 72, 171, 0.36);
+  font-size: 3vh;
+  color: white;
 }
 
 .colors {
-
+  display: inline-block;
 }
 
 .colors .color {
@@ -108,12 +113,61 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   opacity: 1;
-  margin-top: 0vh;
+  margin-bottom: 1vh;
   transition: 200ms linear;
   float: left;
   cursor: pointer;
+  border-radius: 10vh;
 }
 
-.colors .color:hover {
+.colors .color:hover, .colors .color.active {
   margin-top: 1vh;
+  margin-bottom: 0;
+}
+
+.colors .color.disabled {
+  opacity: 0.3;
+  margin-top: 0 !important;
+  margin-bottom: 1vh !important;
+}
+
+.colors .color.active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.join form {
+  text-align: left;
+}
+
+.join form select, .join form button, .join form input {
+  font-size: 3vh;
+  margin-top: 1vh;
+  font-family: BeonMedium;
+  background-color: #e99edb;
+  border: none;
+  color: white;
+  padding: 1vh;
+  border-radius: 0.4em;
+  transition: 200ms linear;
+}
+
+.join form select:focus, .join form button:focus, .join form input:focus {
+  outline: 0;
+}
+
+.join form button, .join form select {
+  cursor: pointer;
+}
+
+.join form button:hover, .join form select:hover, .join form input:focus {
+  background-color: #ca88bd;
+}
+
+.join form button {
+  float: right;
+}
+
+.join form button:disabled {
+  background-color: #583b53;
+  color: #86587d;
 }

@@ -1,5 +1,13 @@
 export default function connectSocketToStore(socket, store) {
 
+  socket.on('connect', () => {
+    console.log('connect');
+  });
+
+  socket.on('error', () => {
+    console.log('error');
+  });
+
   socket.on('available-colors', () => {
     console.log('available-colors');
   });
