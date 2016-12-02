@@ -8,9 +8,8 @@ const DefaultState = Record({
   })),
   join: new (Record({
     status: 'STAND', // STAND | CONNECTING | CONNECTED
-    avalibleColors: ['green', 'pink', 'yellow', 'blue']
+    avalibleColors: ['green', 'red', 'yellow', 'blue']
   })),
-  joinStatus: 'STAND', // STAND | CONNECTING | CONNECTED
   player: new (Record({
     color: null,
     name: ''

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { joinTheServer, joinSetColor, joinSetName, joinSetCategory } from '../redux/actions';
 import { injectIntl, intlShape, FormattedMessage, defineMessages } from 'react-intl';
 
-const colors = ['green', 'pink', 'yellow', 'blue'];
+const colors = ['green', 'red', 'yellow', 'blue'];
 
 const messages = defineMessages({
   login: {

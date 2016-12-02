@@ -56,7 +56,7 @@ body {
   background-image: url(/assets/field_green.png);
 }
 
-.map .field.pink, .join .colors .color.pink {
+.map .field.pink, .join .colors .color.red {
   background-image: url(/assets/field_pink.png);
 }
 
