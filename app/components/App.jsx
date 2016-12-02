@@ -10,20 +10,22 @@ import { changeLanguage } from '../redux/actions';
 import Header from './Header';
 import Map from './Map';
 import map from './map';
+import JoinScreen from './JoinScreen';
+import createLogger from 'redux-logger';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const store = createStore(reducer, applyMiddleware(thunk, createLogger()));
 
 export default class App extends Component {
 
   render() {
-
 
     return (
       <Provider store={store}>
         <Intl>
           <div>
             <Header />
-            <Map data={map} />
+            {false ? <JoinScreen />
+            : <Map data={map} />}
           </div>
         </Intl>
       </Provider>

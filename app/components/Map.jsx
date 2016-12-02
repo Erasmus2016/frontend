@@ -14,15 +14,19 @@ export default class Map extends Component {
     const highestX = data.reduce((highest, { x }) => Math.max(highest, x), 0);
     const highestY = data.reduce((highest, { y }) => Math.max(highest, y), 0);
 
-    const fieldSize = Math.min(window.innerHeight / highestY, window.innerWidth / highestX) * 0.85;
+    const fieldSize = Math.min(window.innerHeight / highestY, window.innerWidth / highestX) * 0.80;
     const fields = data.map(({ id, x, y }) =>
         <Field key={id} size={fieldSize} x={x} y={y} />
       );
 
     const boxWidth = (window.innerWidth - fieldSize * Math.min(highestX)) / 2
-    const boxHeight = 221/351 * boxWidth;
+    const startHeight = 221/351 * boxWidth;
+    const endHeight = 301/468 * boxWidth;
 
-    const fieldOneY = data.find(({ id }) => id === 0, 0).y;
+    const fieldOneY = data.find(({ id }) => id === 0).y;
+    const fieldLastY = data.reduce((prev, { id, y }) =>
+      prev.id > id ? prev : { id, y }
+    , {id : 0, y: 0}).y;
 
     return (
       <div
@@ -36,9 +40,18 @@ export default class Map extends Component {
           className="start"
           style={{
             width: `${boxWidth}px`,
-            height: `${boxHeight}px`,
+            height: `${startHeight}px`,
             left: `-${boxWidth}px`,
-            top: `${fieldOneY * fieldSize - boxHeight / 2 + fieldSize / 2}px`
+            top: `${fieldOneY * fieldSize - startHeight / 2 + fieldSize / 2}px`
+          }}
+        />
+        <div
+          className="end"
+          style={{
+            width: `${boxWidth}px`,
+            height: `${endHeight}px`,
+            left: `${highestX * fieldSize}px`,
+            top: `${fieldLastY * fieldSize - endHeight / 2 + fieldSize / 2}px`
           }}
         />
       </div>

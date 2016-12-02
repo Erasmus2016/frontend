@@ -5,6 +5,10 @@
   font-style: normal;
 }
 
+.clear-both {
+  clear: both;
+}
+
 body {
   font-family: BeonMedium;
   background-image: url(assets/background.png);
@@ -48,19 +52,19 @@ body {
   position: absolute;
 }
 
-.map .field.green {
+.map .field.green, .join .colors .color.green {
   background-image: url(/assets/field_green.png);
 }
 
-.map .field.pink {
+.map .field.pink, .join .colors .color.pink {
   background-image: url(/assets/field_pink.png);
 }
 
-.map .field.yellow {
+.map .field.yellow, .join .colors .color.yellow {
   background-image: url(/assets/field_yellow.png);
 }
 
-.map .field.blue {
+.map .field.blue, .join .colors .color.blue {
   background-image: url(/assets/field_blue.png);
 }
 
@@ -71,4 +75,45 @@ body {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.end {
+  position: absolute;
+  background-image: url(/assets/end.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.join {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  width: 50vw;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  background-color: #e89dda;
+}
+
+.colors {
+
+}
+
+.colors .color {
+  width: 10vh;
+  height: 10vh;
+  display: inline-block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  margin-top: 0vh;
+  transition: 200ms linear;
+  float: left;
+  cursor: pointer;
+}
+
+.colors .color:hover {
+  margin-top: 1vh;
 }

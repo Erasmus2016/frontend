@@ -5,3 +5,9 @@ export function edit() {
     type: EDIT
   }
 }
+
+export function joinTheServer() {
+  return () => {
+
+  };
+}
