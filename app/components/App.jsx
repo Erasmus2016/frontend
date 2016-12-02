@@ -12,8 +12,22 @@ import Map from './Map';
 import map from './map';
 import JoinScreen from './JoinScreen';
 import createLogger from 'redux-logger';
+import io from 'socket.io-client';
+import connectSocketToStore from '../lib/connectSocketToStore';
 
-const store = createStore(reducer, applyMiddleware(thunk, createLogger()));
+const socket = io('http://localhost:80');
+
+const store = createStore(
+  reducer,
+  applyMiddleware(
+    thunk.withExtraArgument({
+      emit: socket.emit
+    }),
+    createLogger()
+  )
+);
+
+connectSocketToStore(socket, store);
 
 export default class App extends Component {
 
