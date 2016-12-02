@@ -117,3 +117,26 @@ body {
 .colors .color:hover {
   margin-top: 1vh;
 }
+
+.dice {
+  background-image: url(/assets/DICES.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 15vh;
+  height: 15vh;
+  position: absolute;
+  left: -15vh;
+  top: 65vh;
+}
+.diceOff {
+  background-image: url(/assets/Dicesoff.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 15vh;
+  height: 15vh;
+  position: absolute;
+  left: -15vh;
+  top: 65vh;
+}

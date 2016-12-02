@@ -1,7 +1,7 @@
 import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
 import Field from './Field';
-
+import Dice from './Dice';
 export default class Map extends Component {
 
   static propTypes = {
@@ -46,14 +46,15 @@ export default class Map extends Component {
           }}
         />
         <div
-          className="end"
-          style={{
-            width: `${boxWidth}px`,
-            height: `${endHeight}px`,
-            left: `${highestX * fieldSize}px`,
-            top: `${fieldLastY * fieldSize - endHeight / 2 + fieldSize / 2}px`
-          }}
+            className="end"
+            style={{
+                width: `${boxWidth}px`,
+                height: `${endHeight}px`,
+                left: `${highestX * fieldSize}px`,
+                top: `${fieldLastY * fieldSize - endHeight / 2 + fieldSize / 2}px`
+            }}
         />
+        <Dice isActive={true} />
       </div>
     );
   }
