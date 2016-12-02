@@ -33,6 +33,9 @@ export default (state = new DefaultState, action) => {
 
     case actions.JOIN_FORM_SET_CATEGORY:
       return state.setIn(['app', 'category'], action.payload.category);
+
+    case actions.DICE_IS_ROLLED:
+      return state.setIn(['app', 'category'], action.payload.category);
   }
 
   return state;
