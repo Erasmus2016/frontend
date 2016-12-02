@@ -1,5 +1,6 @@
 import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react';
+import { rollTheDice } from '../redux/actions';
 import classNames from 'classnames';
 
 export default class Dice extends Component {
@@ -16,7 +17,9 @@ export default class Dice extends Component {
   render() {
     return (
         <div
-            className={this.props.isActive ? 'dice' : 'diceOff'}>
+            className={this.props.isActive ? 'dice' : 'diceOff'}
+            onClick={() => rollTheDice()}
+        >
         </div>
     );
   }

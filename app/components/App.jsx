@@ -38,7 +38,7 @@ export default class App extends Component {
         <Intl>
           <div>
             <Header />
-            {true ? <JoinScreen />
+            {false ? <JoinScreen />
             : <Map data={map} />}
           </div>
         </Intl>
