@@ -1,7 +1,7 @@
 {
-  "join.action": "Was?",
-  "join.category.all": "Was?",
-  "join.form.color": "Was?",
-  "join.form.category": "Was?",
-  "join.form.nick": "Was?"
+  "join.action": "Beitreten",
+  "join.category.all": "Alle",
+  "join.form.color": "Farbe",
+  "join.form.category": "Kategorie",
+  "join.form.nick": "Nick"
 }
