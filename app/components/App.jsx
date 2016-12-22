@@ -15,7 +15,7 @@ import JoinScreen from './JoinScreen';
 import connectSocketToStore from '../lib/connectSocketToStore';
 
 // window.io is for development
-const socket = window.io = io('https://barmania.eu');
+const socket = window.io = io('https://api.barmania.eu');
 
 const store = createStore(
   reducer,
