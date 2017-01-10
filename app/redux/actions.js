@@ -46,10 +46,19 @@ export function joinSetCategory(category) {
 }
 
 export function rollTheDice(){
-  return{
-    type: DICE_IS_ROLLED
-  }
+    return (dispatch, getState, { emit }) => {
+        emit('roll-the-dice');
+        dispatch({
+            type: DICE_IS_ROLLED
+        });
+    };
 
+    /* console.log("actions.js");
+     emit('roll-the-dice', {  });
+     return{
+       type: DICE_IS_ROLLED,
+       payload:true
+     }*/
 }
 
 export function setAvalibleColors(colors) {
