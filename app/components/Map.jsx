@@ -19,7 +19,7 @@ export default class Map extends Component {
         <Field key={id} size={fieldSize} x={x} y={y} />
       );
 
-    const boxWidth = (window.innerWidth - fieldSize * Math.min(highestX)) / 2
+    const boxWidth = (window.innerWidth - fieldSize * Math.min(highestX)) / 2;
     const startHeight = 221/351 * boxWidth;
     const endHeight = 301/468 * boxWidth;
 
