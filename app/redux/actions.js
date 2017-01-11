@@ -5,6 +5,7 @@ export const JOIN_FORM_SET_CATEGORY = 'JOIN_FORM_SET_CATEGORY';
 export const DICE_IS_READY = 'DICE_IS_READY';
 export const DICE_IS_ROLLED = 'DICE_IS_ROLLED';
 export const EVENT_AVAILABLE_COLORS = 'EVENT_AVAILABLE_COLORS';
+export const SET_MAP = 'SET_MAP';
 
 export function joinTheServer() {
   return (dispatch, getState, { emit }) => {
@@ -68,4 +69,13 @@ export function setAvailableColors(colors) {
       colors
     }
   }
+}
+
+export function setMap(map) {
+    return {
+        type: SET_MAP,
+        payload: {
+            map
+        }
+    }
 }
