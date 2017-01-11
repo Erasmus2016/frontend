@@ -22,6 +22,7 @@ export default function connectSocketToStore(socket, store) {
 
   socket.on('roll-the-dice', () => {
     console.log('roll-the-dice');
+    store.dispatch(actions.setActivateDice())
   });
 
   socket.on('dice-result', () => {

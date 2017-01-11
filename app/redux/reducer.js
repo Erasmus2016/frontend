@@ -38,9 +38,11 @@ export default (state = new DefaultState, action) => {
     case actions.JOIN_FORM_SET_CATEGORY:
       return state.setIn(['app', 'category'], action.payload.category);
 
-    case actions.DICE_IS_ROLLED:
+    case actions.DICE_IS_READY:
       return state.setIn(['dice', 'status'], true);
 
+    case actions.DICE_IS_ROLLED:
+        return state.setIn(['dice', 'status'], false);
     case actions.EVENT_AVAILABLE_COLORS:
       return state.setIn(['join', 'availableColors'], action.payload.colors);
     case actions.SET_MAP:

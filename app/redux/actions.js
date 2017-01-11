@@ -79,3 +79,9 @@ export function setMap(map) {
         }
     }
 }
+
+export function setActivateDice() {
+    return {
+        type: DICE_IS_READY
+    }
+}

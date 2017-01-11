@@ -7,19 +7,19 @@ import { injectIntl} from 'react-intl';
 class Dice extends Component {
 
   static propTypes = {
-    isActive: PropTypes.bool.isRequired,
+    dice: PropTypes.bool.isRequired,
     rollTheDice:PropTypes.func.isRequired
   };
 
   render() {
       const {
-          isActive,
+          dice,
           rollTheDice
       } = this.props;
 
     return (
         <div
-            className={this.props.isActive ? 'dice' : 'diceOff'}
+            className={this.props.dice ? 'dice' : 'diceOff'}
             onClick={(e) => {e.preventDefault(); rollTheDice();}}
         >
         </div>
@@ -27,6 +27,7 @@ class Dice extends Component {
   }
 
 }
+
 export default injectIntl(connect(state => ({
     dice: state.dice.status
 }), { rollTheDice })(Dice));
