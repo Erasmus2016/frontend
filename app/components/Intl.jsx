@@ -10,7 +10,7 @@ const langs = {
   cs: require('../lang/cs.json'),
   en: require('../lang/en.json'),
   de: require('../lang/de.json')
-}
+};
 
 // https://github.com/yahoo/react-intl/wiki/API#addlocaledata
 addLocaleData([...en, ...de, ...cs]);
@@ -19,7 +19,7 @@ export default class Intl extends Component {
 
   static propTypes = {
     children: PropTypes.element.isRequired
-  }
+  };
 
   render() {
     const { children } = this.props;
