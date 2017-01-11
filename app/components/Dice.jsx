@@ -16,7 +16,7 @@ class Dice extends Component {
           isActive,
           rollTheDice
       } = this.props;
-      
+
     return (
         <div
             className={this.props.isActive ? 'dice' : 'diceOff'}

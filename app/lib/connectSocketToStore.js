@@ -1,3 +1,5 @@
+import * as actions from '../redux/actions';
+
 export default function connectSocketToStore(socket, store) {
 
   socket.on('connect', () => {
@@ -10,7 +12,7 @@ export default function connectSocketToStore(socket, store) {
 
   socket.on('available-colors', (colors) => {
     console.log('available-colors', colors);
-    store.dispatch(setAvalibleColors(colors));
+    store.dispatch(actions.setAvailableColors(colors));
   });
 
   socket.on('map', () => {

@@ -8,7 +8,7 @@ const DefaultState = Record({
   })),
   join: new (Record({
     status: 'STAND', // STAND | CONNECTING | CONNECTED
-    avalibleColors: ['green', 'red', 'yellow', 'blue']
+    availableColors: ['green', 'red', 'yellow', 'blue']
   })),
   player: new (Record({
     color: null,
@@ -38,11 +38,10 @@ export default (state = new DefaultState, action) => {
       return state.setIn(['app', 'category'], action.payload.category);
 
     case actions.DICE_IS_ROLLED:
-      console.log("hello");
       return state.setIn(['dice', 'status'], true);
 
-    case actions.EVENT_AVALIBLE_COLORS:
-      return state.setIn(['join', 'avalibleColors'], action.payload.colors);
+    case actions.EVENT_AVAILABLE_COLORS:
+      return state.setIn(['join', 'availableColors'], action.payload.colors);
   }
 
   return state;

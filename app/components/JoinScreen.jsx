@@ -37,7 +37,7 @@ class JoinScreen extends Component {
     category: PropTypes.string,
     name: PropTypes.string,
     color: PropTypes.string,
-    avalibleColors: PropTypes.array.isRequired,
+    availableColors: PropTypes.array.isRequired,
     status: PropTypes.string.isRequired,
     joinTheServer: PropTypes.func.isRequired,
     joinSetColor: PropTypes.func.isRequired,
@@ -51,7 +51,7 @@ class JoinScreen extends Component {
       category,
       name,
       color,
-      avalibleColors,
+      availableColors,
       status,
       joinTheServer,
       joinSetColor,
@@ -69,7 +69,7 @@ class JoinScreen extends Component {
                 key={c}
                 onClick={() => joinSetColor(c)}
                 className={classNames('color', c, {
-                  disabled: !avalibleColors.includes(c),
+                  disabled: !availableColors.includes(c),
                   active: color === c
                 })}
               />
@@ -109,6 +109,6 @@ export default injectIntl(connect(state => ({
   color: state.player.color,
   name: state.player.name,
   category: state.app.category,
-  avalibleColors: state.join.avalibleColors,
+  availableColors: state.join.availableColors,
   status: state.join.status
 }), { joinTheServer, joinSetColor, joinSetName, joinSetCategory })(JoinScreen));
