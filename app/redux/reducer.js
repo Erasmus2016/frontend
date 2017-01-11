@@ -4,7 +4,8 @@ import { Record } from 'immutable';
 const DefaultState = Record({
   app: new (Record({
     lang: 'en',
-    category: 'all'
+    category: 'all',
+    map:[]
   })),
   join: new (Record({
     status: 'STAND', // STAND | CONNECTING | CONNECTED
@@ -42,6 +43,8 @@ export default (state = new DefaultState, action) => {
 
     case actions.EVENT_AVAILABLE_COLORS:
       return state.setIn(['join', 'availableColors'], action.payload.colors);
+    case actions.SET_MAP:
+      return state.setIn(['app', 'map'], action.payload.map);
   }
 
   return state;

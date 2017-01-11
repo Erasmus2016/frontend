@@ -15,8 +15,9 @@ export default function connectSocketToStore(socket, store) {
     store.dispatch(actions.setAvailableColors(colors));
   });
 
-  socket.on('map', () => {
+  socket.on('map', (map) => {
     console.log('map');
+    store.dispatch(actions.setMap(map));
   });
 
   socket.on('roll-the-dice', () => {
