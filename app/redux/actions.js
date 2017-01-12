@@ -6,6 +6,7 @@ export const DICE_IS_READY = 'DICE_IS_READY';
 export const DICE_IS_ROLLED = 'DICE_IS_ROLLED';
 export const EVENT_AVAILABLE_COLORS = 'EVENT_AVAILABLE_COLORS';
 export const SET_MAP = 'SET_MAP';
+export const GAME_IS_READY = 'GAME_IS_READY';
 
 export function joinTheServer() {
   return (dispatch, getState, { emit }) => {
@@ -77,5 +78,10 @@ export function setMap(map) {
         payload: {
             map
         }
+    }
+}
+export function setGameIsReady(){
+    return{
+        type:GAME_IS_READY
     }
 }

@@ -9,46 +9,36 @@ import Intl from './Intl';
 import reducer from '../redux/reducer';
 import { changeLanguage } from '../redux/actions';
 import Header from './Header';
-import Screen from './Screen';
+import Map from './Map';
+import map from './map';
+import JoinScreen from './JoinScreen';
 import connectSocketToStore from '../lib/connectSocketToStore';
 import { connect } from 'react-redux';
 
-// window.io is for development
-const socket = window.io = io('https://api.barmania.eu');
 
-const store = createStore(
-  reducer,
-  applyMiddleware(
-    thunk.withExtraArgument({
-      emit: socket.emit.bind(socket)
-    }),
-    createLogger()
-  )
-);
-
-connectSocketToStore(socket, store);
-
-class App extends Component {
+class Screen extends Component {
     static propTypes = {
         isJoinScreen: PropTypes.bool
     };
 
-  render() {
+    render() {
 
-      const {
-          isJoinScreen
-      }=this.props;
+        const {
+            isJoinScreen
+        }=this.props;
 
-    return (
-      <Provider store={store}>
-        <Intl>
-            <Screen />
-        </Intl>
-      </Provider>
-    );
-  }
+        return (
+
+            <div>
+                <Header />
+                {isJoinScreen ? <JoinScreen />
+                    : <Map data={map} />}
+            </div>
+
+        );
+    }
 }
 
 export default connect(state => ({
-   isJoinScreen:state.join.status == 'CONNECTED'
-}))(App);
+    isJoinScreen:state.join.status == 'CONNECTED'
+}))(Screen);

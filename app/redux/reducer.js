@@ -45,6 +45,8 @@ export default (state = new DefaultState, action) => {
       return state.setIn(['join', 'availableColors'], action.payload.colors);
     case actions.SET_MAP:
       return state.setIn(['app', 'map'], action.payload.map);
+    case actions.GAME_IS_READY:
+      return state.setIn(['join', 'status'], 'CONNECTED');
   }
 
   return state;

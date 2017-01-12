@@ -18,6 +18,7 @@ export default function connectSocketToStore(socket, store) {
   socket.on('map', (map) => {
     console.log('map');
     store.dispatch(actions.setMap(map));
+    store.dispatch(actions.setGameIsReady());
   });
 
   socket.on('roll-the-dice', () => {
