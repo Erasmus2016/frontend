@@ -10,7 +10,6 @@ import reducer from '../redux/reducer';
 import { changeLanguage } from '../redux/actions';
 import Header from './Header';
 import Map from './Map';
-import map from './map';
 import JoinScreen from './JoinScreen';
 import connectSocketToStore from '../lib/connectSocketToStore';
 import { connect } from 'react-redux';
@@ -18,13 +17,15 @@ import { connect } from 'react-redux';
 
 class Screen extends Component {
     static propTypes = {
-        isJoinScreen: PropTypes.bool
+        isJoinScreen: PropTypes.bool,
+        map: PropTypes.array.isRequired
     };
 
     render() {
 
         const {
-            isJoinScreen
+            isJoinScreen,
+            map
         }=this.props;
 
         return (
@@ -40,5 +41,6 @@ class Screen extends Component {
 }
 
 export default connect(state => ({
-    isJoinScreen:state.join.status == 'CONNECTED'
+    isJoinScreen:state.join.status != 'CONNECTED',
+    map:state.app.map
 }))(Screen);

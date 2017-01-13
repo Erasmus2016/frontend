@@ -184,7 +184,7 @@ body {
   width: 15vh;
   height: 15vh;
   position: absolute;
-  left: -15vh;
+  left: -10vh;
   top: 65vh;
 }
 .diceOff {
@@ -195,6 +195,17 @@ body {
   width: 15vh;
   height: 15vh;
   position: absolute;
-  left: -15vh;
+  left: -10vh;
   top: 65vh;
+}
+.diceResult{
+  width: 15vh;
+  height: 15vh;
+  position: absolute;
+  left: 5vh;
+  top: 65vh;
+  font-family: BeonMedium;
+  text-shadow: -1vh -0.2vh 0.1vh #000000;
+  color: #ca88bd;
+  font-size: 10vh;
 }

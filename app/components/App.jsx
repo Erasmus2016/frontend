@@ -28,7 +28,7 @@ const store = createStore(
 
 connectSocketToStore(socket, store);
 
-class App extends Component {
+export default class App extends Component {
     static propTypes = {
         isJoinScreen: PropTypes.bool
     };
@@ -42,13 +42,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Intl>
-            <Screen />
+            <Screen/>
         </Intl>
       </Provider>
     );
   }
 }
-
-export default connect(state => ({
-   isJoinScreen:state.join.status == 'CONNECTED'
-}))(App);

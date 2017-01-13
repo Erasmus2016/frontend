@@ -6,27 +6,34 @@ import { injectIntl} from 'react-intl';
 
 class Dice extends Component {
 
-  static propTypes = {
-    isActive: PropTypes.bool.isRequired,
-    rollTheDice:PropTypes.func.isRequired
-  };
+    static propTypes = {
+        dice: PropTypes.bool.isRequired,
+        rollTheDice:PropTypes.func.isRequired,
+        diceResult:PropTypes.number
+    };
 
-  render() {
-      const {
-          isActive,
-          rollTheDice
-      } = this.props;
+    render() {
+        const {
+            dice,
+            rollTheDice,
+            diceResult
+        } = this.props;
 
-    return (
-        <div
-            className={this.props.isActive ? 'dice' : 'diceOff'}
-            onClick={(e) => {e.preventDefault(); rollTheDice();}}
-        >
-        </div>
-    );
-  }
+        return (
+            <div>
+                <div
+                    className={this.props.dice ? 'dice' : 'diceOff'}
+                    onClick={(e) => {e.preventDefault(); rollTheDice();}}/>
+                <div className='diceResult'>
+                    {(this.props.diceResult > 0) ? this.props.diceResult : ''}
+                </div>
+            </div>
+        );
+    }
 
 }
+
 export default injectIntl(connect(state => ({
-    dice: state.dice.status
+    dice: state.dice.status,
+    diceResult: state.dice.result
 }), { rollTheDice })(Dice));
