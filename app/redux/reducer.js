@@ -1,11 +1,12 @@
 import * as actions from './actions';
 import { Record } from 'immutable';
+import map from '../components/map';
 
 const DefaultState = Record({
   app: new (Record({
     lang: 'en',
     category: 'all',
-    map:[]
+    map:map
   })),
   join: new (Record({
     status: 'STAND', // STAND | CONNECTING | CONNECTED
@@ -16,7 +17,8 @@ const DefaultState = Record({
     name: ''
   })),
   dice: new(Record({
-    status: false
+    status: false,
+    result: 0
   }))
 });
 
@@ -38,15 +40,20 @@ export default (state = new DefaultState, action) => {
     case actions.JOIN_FORM_SET_CATEGORY:
       return state.setIn(['app', 'category'], action.payload.category);
 
-    case actions.DICE_IS_READY:
-      return state.setIn(['dice', 'status'], true);
+      case actions.DICE_IS_ROLLED:
+      console.log('diceIsRolled');
+      return state.setIn(['dice', 'status'], false);
 
-    case actions.DICE_IS_ROLLED:
-        return state.setIn(['dice', 'status'], false);
     case actions.EVENT_AVAILABLE_COLORS:
       return state.setIn(['join', 'availableColors'], action.payload.colors);
     case actions.SET_MAP:
       return state.setIn(['app', 'map'], action.payload.map);
+    case actions.GAME_IS_READY:
+      return state.setIn(['join', 'status'], 'CONNECTED');
+    case actions.DICE_IS_READY:
+      return state.setIn(['dice', 'status'], true)
+    case actions.DICE_RESULT:
+      return state.setIn(['dice', 'result'], action.payload.result)
   }
 
   return state;

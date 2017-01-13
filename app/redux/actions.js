@@ -6,6 +6,8 @@ export const DICE_IS_READY = 'DICE_IS_READY';
 export const DICE_IS_ROLLED = 'DICE_IS_ROLLED';
 export const EVENT_AVAILABLE_COLORS = 'EVENT_AVAILABLE_COLORS';
 export const SET_MAP = 'SET_MAP';
+export const GAME_IS_READY = 'GAME_IS_READY';
+export const DICE_RESULT = 'DICE_RESULT'
 
 export function joinTheServer() {
   return (dispatch, getState, { emit }) => {
@@ -49,6 +51,7 @@ export function joinSetCategory(category) {
 export function rollTheDice(){
     return (dispatch, getState, { emit }) => {
         emit('roll-the-dice');
+        console.log('rolltheDice');
         dispatch({
             type: DICE_IS_ROLLED
         });
@@ -60,6 +63,11 @@ export function rollTheDice(){
        type: DICE_IS_ROLLED,
        payload:true
      }*/
+}
+export function setActivateDice(){
+    return {
+        type: DICE_IS_READY
+    }
 }
 
 export function setAvailableColors(colors) {
@@ -79,9 +87,16 @@ export function setMap(map) {
         }
     }
 }
-
-export function setActivateDice() {
-    return {
-        type: DICE_IS_READY
+export function setGameIsReady(){
+    return{
+        type:GAME_IS_READY
+    }
+}
+export function setDiceResult(result){
+    return{
+        type: DICE_RESULT,
+        payload:{
+            result
+        }
     }
 }

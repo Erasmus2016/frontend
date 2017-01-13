@@ -6,7 +6,7 @@ export default class Map extends Component {
 
   static propTypes = {
     data: PropTypes.array.isRequired,
-    state: PropTypes.object.isRequired
+    //state: PropTypes.object.isRequired
   };
 
   render() {

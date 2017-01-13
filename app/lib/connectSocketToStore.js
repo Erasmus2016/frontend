@@ -18,15 +18,17 @@ export default function connectSocketToStore(socket, store) {
   socket.on('map', (map) => {
     console.log('map');
     store.dispatch(actions.setMap(map));
+
+    store.dispatch(actions.setGameIsReady());
   });
 
   socket.on('roll-the-dice', () => {
-    console.log('roll-the-dice');
-    store.dispatch(actions.setActivateDice())
+    store.dispatch(actions.setActivateDice());
   });
 
-  socket.on('dice-result', () => {
-    console.log('dice-result');
+  socket.on('dice-result', (result) => {
+    console.log('dice-result' + result);
+    store.dispatch(actions.setDiceResult(result));
   });
 
   socket.on('game-over', () => {
