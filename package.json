@@ -1,6 +1,6 @@
 {
   "name": "barmania-frontend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Game created during Erasmus+",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
     "Kevin Giesübel",
     "Andre Brand"
   ],
-  "license": "MIT",
+  "license": "EUPL",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",

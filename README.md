@@ -23,7 +23,7 @@ Now you're ready to rumble!
 
 ## License
 
-This project is licensed under the MIT license,<br>
+This project is licensed under the EUPL license,<br>
 Copyright (c) 2017 Filip Pyrek,<br>
 Copyright (c) 2017 Kevin Giesübel,<br>
 Copyright (c) 2017 Andre Brand,<br>
