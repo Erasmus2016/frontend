@@ -40,7 +40,9 @@ describe('asyncInjectors', () => {
 
   describe('getAsyncInjectors', () => {
     before(() => {
-      store = configureStore({}, memoryHistory);
+      store = configureStore({
+        on() {},
+      }, {}, memoryHistory);
     });
 
     it('given a store, should return all async injectors', () => {
@@ -72,7 +74,9 @@ describe('asyncInjectors', () => {
 
   describe('helpers', () => {
     before(() => {
-      store = configureStore({}, memoryHistory);
+      store = configureStore({
+        on() {},
+      }, {}, memoryHistory);
     });
 
     describe('injectAsyncReducer', () => {

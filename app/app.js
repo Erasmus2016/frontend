@@ -21,6 +21,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
+import createSocket from 'socket.io-client';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
@@ -28,12 +29,19 @@ import { translationMessages } from './i18n';
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
 
+// Create socket connection
+const socket = createSocket(
+    process.env.NODE_ENV === 'production'
+      ? 'https://api.barmania.eu'
+      : 'http://localhost:5000'
+  );
+
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const store = configureStore(initialState, browserHistory);
+const store = configureStore(socket, initialState, browserHistory);
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState

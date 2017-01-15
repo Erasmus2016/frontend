@@ -10,7 +10,9 @@ describe('configureStore', () => {
   let store;
 
   before(() => {
-    store = configureStore({}, browserHistory);
+    store = configureStore({
+      on() {},
+    }, {}, browserHistory);
   });
 
   describe('asyncReducers', () => {
