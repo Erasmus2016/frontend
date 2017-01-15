@@ -28,4 +28,4 @@ Copyright (c) 2017 Filip Pyrek,<br>
 Copyright (c) 2017 Kevin Giesübel,<br>
 Copyright (c) 2017 Andre Brand,<br>
 Copyright (c) 2016 Maximilian Stoiber.<br>
-For more information see `LICENSE.md`.
+For more information see `LICENSE`.
