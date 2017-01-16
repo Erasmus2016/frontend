@@ -24,7 +24,7 @@ export default function createSocketToStoreEnhancer(socket) {
       type: ActionTypes.SOCKET_ERROR,
     })));
 
-    socket.on('login', () => dispatch(({
+    on('login', () => dispatch(({
       type: ActionTypes.SOCKET_EVENT_LOGIN,
     })));
 
