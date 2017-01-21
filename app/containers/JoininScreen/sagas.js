@@ -8,7 +8,7 @@ export function* setAvailableColor() {
   const colors = yield select(selectAvalibleColors());
   yield put({
     type: FORM_SET_COLOR,
-    payload: { color: colors[0] },
+    payload: { color: colors.get(0) },
   });
 }
 

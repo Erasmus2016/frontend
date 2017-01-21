@@ -1,21 +1,21 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the game state domain
- */
+
 const selectCanLogin = () =>
   (state) => state.getIn(['game', 'data', 'canLogin'], false);
 
-/**
- * Selector for avalible colors
- */
+
 const selectAvalibleColors = () =>
   (state) => state.getIn(['game', 'data', 'availableColors']);
 
-/**
- * Other specific selectors
- */
+const selectMap = () =>
+  (state) => state.getIn(['game', 'data', 'map']);
 
+const selectCanRollTheDice = () =>
+  (state) => state.getIn(['game', 'data', 'canRollTheDice']);
+
+const selectDiceResult = () =>
+  (state) => state.getIn(['game', 'data', 'diceResult']);
 
 /**
  * Default selector used by GameScreen
@@ -23,8 +23,14 @@ const selectAvalibleColors = () =>
 
 const selectGameScreen = () => createSelector(
   selectCanLogin(),
-  (canLogin) => ({
+  selectMap(),
+  selectCanRollTheDice(),
+  selectDiceResult(),
+  (canLogin, map, canRollTheDice, diceResult) => ({
     canLogin,
+    map: map ? map.toJS() : null,
+    canRollTheDice,
+    diceResult,
   })
 );
 
