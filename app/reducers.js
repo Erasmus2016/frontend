@@ -7,6 +7,8 @@ import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
+import gameReducer from 'containers/GameScreen/reducer';
+import joininReducer from 'containers/JoininScreen/reducer';
 
 /*
  * routeReducer
@@ -37,12 +39,13 @@ function routeReducer(state = routeInitialState, action) {
 }
 
 /**
- * Creates the main reducer with the asynchronously loaded ones
+ * Creates the main reducer
  */
-export default function createReducer(asyncReducers) {
+export default function createReducer() {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
-    ...asyncReducers,
+    game: gameReducer,
+    joinin: joininReducer,
   });
 }

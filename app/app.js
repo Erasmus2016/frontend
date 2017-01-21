@@ -21,27 +21,26 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
-import createSocket from 'socket.io-client';
+import createSocketClient from 'socket.io-client';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
-import 'sanitize.css/sanitize.css';
+import 'normalize.css/normalize.css';
 
-// Create socket connection
-const socket = createSocket(
-    process.env.NODE_ENV === 'production'
-      ? 'https://api.barmania.eu'
-      : 'http://localhost:5000'
-  );
+// Socket creation
+const createSocket = () => createSocketClient(
+  process.env.NODE_ENV === 'production' ?
+  'https://api.barmania.eu' : 'http://localhost:5000'
+);
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const store = configureStore(socket, initialState, browserHistory);
+const store = configureStore(createSocket)(initialState, browserHistory);
 
 // Sync history and store, as the react-router-redux reducer
 // is under the non-default key ("routing"), selectLocationState
@@ -51,14 +50,8 @@ const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: selectLocationState(),
 });
 
-// Set up the router, wrapping all Routes in the App component
-import App from 'containers/App';
+// Set up the router, import routes
 import createRoutes from './routes';
-const rootRoute = {
-  component: App,
-  childRoutes: createRoutes(store),
-};
-
 
 const render = (translatedMessages) => {
   ReactDOM.render(
@@ -66,13 +59,14 @@ const render = (translatedMessages) => {
       <LanguageProvider messages={translatedMessages}>
         <Router
           history={history}
-          routes={rootRoute}
           render={
             // Scroll to top when going to a new page, imitating default browser
             // behaviour
             applyRouterMiddleware(useScroll())
           }
-        />
+        >
+          {createRoutes(store)}
+        </Router>
       </LanguageProvider>
     </Provider>,
     document.getElementById('app')
@@ -95,7 +89,9 @@ if (!window.Intl) {
     resolve(System.import('intl'));
   }))
     .then(() => Promise.all([
+      System.import('intl/locale-data/jsonp/en.js'),
       System.import('intl/locale-data/jsonp/de.js'),
+      System.import('intl/locale-data/jsonp/cs.js'),
     ]))
     .then(() => render(translationMessages))
     .catch((err) => {
