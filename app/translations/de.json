@@ -1,1 +1,7 @@
-[]
+{
+  "app.components.GameMap.header": "",
+  "app.components.LandingPage.placeholder": "",
+  "app.components.LandingPage.play": "",
+  "app.components.NotFoundPage.header": "",
+  "app.containers.JoininScreen.header": ""
+}
