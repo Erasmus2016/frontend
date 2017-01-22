@@ -14,7 +14,7 @@
   - [Remote Testing](testing/remote-testing.md)
 - [CSS](css)
   - [`styled-components`](css/styled-componets.md)
-  - [sanitize.css](css/sanitize.md)
+  - [normalize.css](css/normalize.md)
 - [JS](js)
   - [Redux](js/redux.md)
   - [ImmutableJS](js/immutablejs.md)
@@ -24,35 +24,6 @@
   - [routing](js/routing.md)
 
 ## Overview
-
-### Quickstart
-
-1. First, let's kick the tyres by launching the sample _Repospective_ app
-   bundled with this project to demo some of its best features:
-
-    ```Shell
-    npm run setup && npm start
-    ```
-
-1. Open [localhost:3000](http://localhost:3000) to see it in action.
-
-    - Add a Github username to see Redux and Redux Sagas in action: effortless
-      async state updates and side effects are now yours :)
-    - Edit the file at `./app/containers/HomePage/index.js` so that the text of
-      the `<Button>` component reads "Features!!!"... Hot Module Reloading gives
-      you a feedback loop with your UI so smooth it's almost conversational!
-    - Click your (newly emphatic) Features button to see React Router in action...
-      Now you can share a direct link to that content privately over your LAN or
-      globally addressable to any device, anywhere. Not bad for a locally-running
-      Single Page App.
-
-1. Time to build your own app: run
-
-    ```shell
-    npm run clean
-    ```
-
-    ...and use the built-in generators to start your first feature.
 
 ### Development
 
@@ -77,8 +48,8 @@ should not need to be touched.
 
 ### CSS
 
-Utilising [tagged template literals](./docs/tagged-template-literals.md)
-(a recent addition to JavaScript) and the [power of CSS](./docs/css-we-support.md),
+Utilising [tagged template literals](https://github.com/styled-components/styled-components/blob/master/docs/tagged-template-literals.md)
+(a recent addition to JavaScript) and the [power of CSS](https://github.com/styled-components/styled-components/blob/master/docs/css-we-support.md),
 `styled-components` allows you to write actual CSS code to style your components.
 It also removes the mapping between components and styles – using components as a
 low-level styling construct could not be easier!
