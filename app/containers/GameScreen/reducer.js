@@ -4,7 +4,7 @@
  *
  */
 
-import { Record, List, fromJS } from 'immutable';
+import { Map, Record, List, fromJS } from 'immutable';
 import { ActionTypes } from 'utils/socketMiddleware';
 
 const GameData = Record({ // eslint-disable-line new-cap
@@ -13,6 +13,7 @@ const GameData = Record({ // eslint-disable-line new-cap
   map: null,
   canRollTheDice: false,
   diceResult: null,
+  players: null,
 });
 
 const initialState = fromJS({
@@ -40,6 +41,15 @@ function gameReducer(state = initialState, action) {
 
     case ActionTypes.SOCKET_EVENT_DICE_RESULT:
       return state.setIn(['data', 'diceResult'], action.payload.result);
+
+    case ActionTypes.SOCKET_EVENT_PLAYER_POSITION:
+      return state.setIn(['data', 'players'],
+        fromJS(action.payload.position)
+          .reduce((players, info) =>
+            players.set(info.get('color'), info.get('position'))
+            , Map() // eslint-disable-line new-cap
+          )
+        );
 
     default:
       return state;

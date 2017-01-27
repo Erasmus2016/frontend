@@ -18,6 +18,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
   static propTypes = {
     canLogin: PropTypes.bool.isRequired,
     map: PropTypes.array,
+    players: PropTypes.object,
     canRollTheDice: PropTypes.bool.isRequired,
     diceResult: PropTypes.number,
     onRollTheDice: PropTypes.func.isRequired,
@@ -27,6 +28,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
     const {
       canLogin,
       map,
+      players,
       canRollTheDice,
       diceResult,
       onRollTheDice,
@@ -47,7 +49,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
               diceResult={diceResult}
               onRollTheDice={onRollTheDice}
             />
-            <GameMap map={map} />
+            <GameMap map={map} players={players} />
           </div>
         : ''}
       </div>
