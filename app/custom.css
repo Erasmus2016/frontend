@@ -1,5 +1,5 @@
 body {
-    background-image: url(app/background.png);
+    background-image: url(background.png);
 }
 
 .landingPage {
@@ -18,3 +18,20 @@ body {
     font-size: 3vh;
     color: white;
 }
+
+.landingPage button {
+    font-size: 3vh;
+    margin-top: 1vh;
+    background-color: #e99edb;
+    border: none;
+    color: white;
+    padding: 1vh;
+    border-radius: 0.4em;
+    transition: 200ms linear;
+    cursor: pointer;
+}
+
+.landingPage button:hover {
+    background-color: #ca88bd;
+}
+
