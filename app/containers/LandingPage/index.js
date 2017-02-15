@@ -26,7 +26,7 @@ class LandingPage extends React.PureComponent { // eslint-disable-line react/pre
     const { onGameStart } = this.props;
 
     return (
-        <div className="landingPage">
+        <div className="box">
             <h1>
                 <FormattedMessage {...messages.placeholder} />
             </h1>

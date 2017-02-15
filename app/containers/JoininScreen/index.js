@@ -51,9 +51,9 @@ export class JoininScreen extends React.PureComponent { // eslint-disable-line r
     const disableJoinin = !availableColors.includes(color) || !nick;
 
     return (
-      <div>
+      <div className="box">
         <Helmet title="Join in" />
-        <FormattedMessage {...messages.header} />
+        <FormattedMessage {...messages.header} /><br />
         <form onSubmit={this.onFormSubmit}>
           <input
             value={nick}

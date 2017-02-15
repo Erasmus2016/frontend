@@ -2,7 +2,7 @@ body {
     background-image: url(background.png);
 }
 
-.landingPage {
+.box {
     width: 50%;
     margin: 30px auto;
     text-align: center;
@@ -19,19 +19,45 @@ body {
     color: white;
 }
 
-.landingPage button {
+.landingPage button:hover {
+    background-color: #ca88bd;
+}
+
+.box form select, .box form button, .box form input {
     font-size: 3vh;
     margin-top: 1vh;
     background-color: #e99edb;
     border: none;
     color: white;
     padding: 1vh;
+    margin-right: 5px;
     border-radius: 0.4em;
     transition: 200ms linear;
+}
+
+.box form select:focus, .box form button:focus, .box form input:focus {
+    outline: 0;
+}
+
+.box form button, .box form select {
     cursor: pointer;
 }
 
-.landingPage button:hover {
+.box form button:hover, .box form select:hover, .box form input:focus {
     background-color: #ca88bd;
 }
+
+.box form button {
+    float: right;
+}
+
+.box form button:disabled {
+    background-color: #583b53;
+    color: #86587d;
+}
+
+.box form label {
+    margin-right: 1vh;
+}
+
 
