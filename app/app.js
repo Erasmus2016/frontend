@@ -10,8 +10,8 @@ import 'babel-polyfill';
 // Load the manifest.json file
 import 'file?name=[name].[ext]!./favicon.ico';
 import '!file?name=[name].[ext]!./manifest.json';
-import '!file?name=[name].[ext]!./custom.css';
-import '!file?name=[name].[ext]!./background.png';
+import '!file?name=[name].[ext]!./assets/custom.css';
+import '!file?name=[name].[ext]!./assets/background.png';
 
 /* eslint-enable import/no-unresolved, import/extensions */
 
