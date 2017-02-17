@@ -35,7 +35,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
     } = this.props;
 
     const isGame = Boolean(map);
-    const isJoininScreen = true;
+    const isJoininScreen = canLogin && !isGame;
     const isLoading = !isJoininScreen && !isGame;
 
     return (
