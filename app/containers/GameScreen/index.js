@@ -16,7 +16,7 @@ import { ActionTypes } from 'utils/socketMiddleware';
 export class GameScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   static propTypes = {
-    canLogin: PropTypes.bool.isRequired,
+    /* canLogin: PropTypes.bool.isRequired, */
     map: PropTypes.array,
     players: PropTypes.object,
     canRollTheDice: PropTypes.bool.isRequired,
@@ -26,7 +26,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
 
   render() {
     const {
-      canLogin,
+      /* canLogin, */
       map,
       players,
       canRollTheDice,
