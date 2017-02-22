@@ -11,6 +11,7 @@ export const ActionTypes = {
   SOCKET_EVENT_QUESTION: '@@socket/EVENT_QUESTION',
   SOCKET_EVENT_PLAYER_POSITION: '@@socket/EVENT_PLAYER_POSITION',
   SOCKET_EVENT_GAME_OVER: '@@socket/EVENT_GAME_OVER',
+  SOCKET_EVENT_SET_DIFFICULTY: '@@socket/EVENT_SET_DIFFICULTY',
   SOCKET_EMIT_LOGIN: '@@socket/EMIT_LOGIN',
   SOCKET_EMIT_ROLL_THE_DICE: '@@socket/EMIT_ROLL_THE_DICE',
   SOCKET_EMIT_SET_DIFFICULTY: '@@socket/EMIT_SET_DIFFICULTY',
@@ -99,6 +100,10 @@ function bindListeners(on, dispatch) {
   on('dice-result', (result) => dispatch(({
     type: ActionTypes.SOCKET_EVENT_DICE_RESULT,
     payload: { result },
+  })));
+
+  on('set-difficulty', () => dispatch(({
+    type: ActionTypes.SOCKET_EVENT_SET_DIFFICULTY,
   })));
 
   on('question', (question, answers, image) => dispatch(({
