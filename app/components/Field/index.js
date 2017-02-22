@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import fieldRed from '../../assets/field_pink.png';
-import fieldYellow from '../../assets/field_yellow.png';
-import fieldGreen from '../../assets/field_green.png';
-import fieldBlue from '../../assets/field_blue.png';
-import fieldNormal from '../../assets/field_normal.png';
+import fieldRed from 'assets/field_pink.png';
+import fieldYellow from 'assets/field_yellow.png';
+import fieldGreen from 'assets/field_green.png';
+import fieldBlue from 'assets/field_blue.png';
+import fieldNormal from 'assets/field_normal.png';
 
 const getImage = (color) => {
   switch (color) {

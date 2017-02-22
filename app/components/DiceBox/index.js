@@ -6,8 +6,8 @@
 
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
-import diceOn from '../../assets/DICES.png'
-import diceOff from '../../assets/Dicesoff.png'
+import diceOn from 'assets/DICES.png';
+import diceOff from 'assets/Dicesoff.png';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
