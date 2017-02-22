@@ -8,8 +8,8 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import startImg from 'assets/start.png';
 import endImg from 'assets/end.png';
-import normalField from 'assets/field_normal.png';
 import RawField from 'components/Field';
+import SplitField from 'components/SplitField';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -56,15 +56,18 @@ const GameMap = ({ map, players }) => {
 
     const fieldSize = Math.min(window.innerHeight / highestY, window.innerWidth / highestX) * 0.80;
 
-    const fields = map.map(({ id, x, y }) => (
-            <Field
-                key={id}
-                size={fieldSize}
-                y={fieldSize * y}
-                x={fieldSize * x}
-                color="red"
-            />
-        )
+    const fields = map.map(({ id, x, y }) => {
+
+            return (
+                <Field
+                    key={id}
+                    size={fieldSize}
+                    y={fieldSize * y}
+                    x={fieldSize * x}
+                    color="red"
+                />
+            );
+        }
     );
 
     const boxWidth = (window.innerWidth - fieldSize * Math.min(highestX)) / 2;
@@ -105,7 +108,7 @@ const GameMap = ({ map, players }) => {
 
 GameMap.propTypes = {
   map: PropTypes.array,
-  players: PropTypes.object,
+  players: PropTypes.array,
 };
 
 export default GameMap;

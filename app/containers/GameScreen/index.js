@@ -18,7 +18,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
   static propTypes = {
     canLogin: PropTypes.bool.isRequired,
     map: PropTypes.array,
-    players: PropTypes.object,
+    players: PropTypes.array,
     canRollTheDice: PropTypes.bool.isRequired,
     diceResult: PropTypes.number,
     onRollTheDice: PropTypes.func.isRequired,

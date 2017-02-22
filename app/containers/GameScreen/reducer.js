@@ -43,13 +43,7 @@ function gameReducer(state = initialState, action) {
       return state.setIn(['data', 'diceResult'], action.payload.result);
 
     case ActionTypes.SOCKET_EVENT_PLAYER_POSITION:
-      return state.setIn(['data', 'players'],
-        fromJS(action.payload.position)
-          .reduce((players, info) =>
-            players.set(info.get('color'), info.get('position'))
-            , Map() // eslint-disable-line new-cap
-          )
-        );
+      return state.setIn(['data', 'players'], fromJS(action.payload.position).toList());
 
     default:
       return state;
