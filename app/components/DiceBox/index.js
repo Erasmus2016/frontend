@@ -12,18 +12,18 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 const Dice = styled.div`
-    width: 10vh;
-    height: 10vh;
-    background-size: contain;
-    background-repeat:no-repeat;
+  width: 10vh;
+  height: 10vh;
+  background-size: contain;
+  background-repeat:no-repeat;
 `;
 
 const DiceOn = styled(Dice)`
-    background-image: url(${diceOn});
+  background-image: url(${diceOn});
 `;
 
 const DiceOff = styled(Dice)`
-    background-image: url(${diceOff});
+  background-image: url(${diceOff});
 `;
 
 function DiceBox({ onRollTheDice, canRollTheDice, diceResult }) {
@@ -32,7 +32,7 @@ function DiceBox({ onRollTheDice, canRollTheDice, diceResult }) {
       <FormattedMessage {...messages.header} />
       Dice result: [{diceResult}]
 
-        {!canRollTheDice ? <DiceOff /> : <DiceOn onClick={onRollTheDice} />}
+      {!canRollTheDice ? <DiceOff /> : <DiceOn onClick={onRollTheDice} />}
     </div>
   );
 }
