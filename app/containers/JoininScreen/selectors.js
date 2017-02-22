@@ -6,7 +6,6 @@ import { selectAvalibleColors } from 'containers/GameScreen/selectors';
  */
 const selectJoininScreenDomain = () => (state) => state.get('joinin');
 
-
 const selectJoininColor = () => createSelector(
   selectJoininScreenDomain(),
   (joinin) => joinin.get('color')

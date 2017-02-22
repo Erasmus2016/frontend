@@ -13,18 +13,20 @@ import {
 
 const initialState = fromJS({
   nick: '',
-  color: '',
+  color: 'red',
   category: 'all',
+  hadLogin: false,
 });
 
 function joininScreenReducer(state = initialState, action) {
+  const st = state.set('hadLogin', true);
   switch (action.type) {
     case FORM_SET_NICK:
-      return state.set('nick', action.payload.nick);
+      return st.set('nick', action.payload.nick);
     case FORM_SET_COLOR:
-      return state.set('color', action.payload.color);
+      return st.set('color', action.payload.color);
     case FORM_SET_CATEGORY:
-      return state.set('category', action.payload.category);
+      return st.set('category', action.payload.category);
     default:
       return state;
   }

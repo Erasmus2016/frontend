@@ -5,7 +5,8 @@ const selectCanLogin = () =>
   (state) => state.getIn(['game', 'data', 'canLogin'], false);
 
 const selectAvalibleColors = () =>
-  (state) => state.getIn(['game', 'data', 'availableColors']);
+  (state) => state.getIn(['game', 'data', 'availableColors'])
+                   .filter((c) => Boolean(c));
 
 const selectMap = () =>
   (state) => state.getIn(['game', 'data', 'map']);

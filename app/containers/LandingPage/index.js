@@ -15,6 +15,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import messages from './messages';
 import { doStartGame } from './actions';
+import InfoContainer from 'components/InfoContainer';
 
 class LandingPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -26,7 +27,7 @@ class LandingPage extends React.PureComponent { // eslint-disable-line react/pre
     const { onGameStart } = this.props;
 
     return (
-      <div className="box">
+      <InfoContainer>
         <h1>
           <FormattedMessage {...messages.placeholder} />
         </h1>
@@ -35,7 +36,7 @@ class LandingPage extends React.PureComponent { // eslint-disable-line react/pre
         <button onClick={onGameStart}>
           <FormattedMessage {...messages.play} />
         </button>
-      </div>
+      </InfoContainer>
     );
   }
 }

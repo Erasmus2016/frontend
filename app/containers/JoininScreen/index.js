@@ -7,11 +7,44 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 import selectJoininScreen from './selectors';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import { setNick, setColor, setCategory } from './actions';
+import Field from './Field';
 import { ActionTypes } from 'utils/socketMiddleware';
+import InfoContainer from 'components/InfoContainer';
+
+const PinkStyle = `
+  font-size: 3vh;
+  margin-top: 1vh;
+  background-color: #e99edb;
+  border: none;
+  color: white;
+  padding: 1vh;
+  margin-right: 5px;
+  border-radius: 0.4em;
+  transition: 200ms linear;
+`;
+
+const Input = styled.input`
+  ${PinkStyle}
+
+  &:focus {
+    outline: 0;
+  }
+`;
+
+const Button = styled.button`
+  ${PinkStyle}
+  cursor: pointer;
+
+  &[disabled] {
+    opacity: 0.2;
+    cursor: auto;
+  }
+`;
 
 export class JoininScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -23,7 +56,7 @@ export class JoininScreen extends React.PureComponent { // eslint-disable-line r
     onJoinIn: PropTypes.func.isRequired,
     onSetNick: PropTypes.func.isRequired,
     onSetColor: PropTypes.func.isRequired,
-    onSetCategory: PropTypes.func.isRequired,
+    /* onSetCategory: PropTypes.func.isRequired, */
   };
 
   constructor(props) {
@@ -41,36 +74,55 @@ export class JoininScreen extends React.PureComponent { // eslint-disable-line r
     const {
       nick,
       color,
-      category,
+      /* category, */
       availableColors,
       onSetNick,
       onSetColor,
-      onSetCategory,
+      /* onSetCategory, */
     } = this.props;
 
     const disableJoinin = !availableColors.includes(color) || !nick;
+    const colors = ['red', 'yellow', 'blue', 'green'];
 
     return (
-      <div className="box">
+      <InfoContainer>
         <Helmet title="Join in" />
-        <FormattedMessage {...messages.header} /><br />
+        <FormattedMessage {...messages.selectColor} />
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ display: 'inline-block' }}>
+            {
+              colors.map((c) => {
+                const isDisabled = !availableColors.includes(c);
+                const isActive = c === color;
+                return (
+                  <Field
+                    key={c}
+                    color={c}
+                    size="100%"
+                    onClick={() => !isDisabled && onSetColor(c)}
+                    active={isActive}
+                    disabled={isDisabled}
+                  />
+                );
+              })
+            }
+            <div style={{ clear: 'both' }} />
+          </div>
+        </div>
         <form onSubmit={this.onFormSubmit}>
-          <input
+          <FormattedMessage {...messages.setNick} />
+          <br />
+          <Input
             value={nick}
             type="text"
             onChange={(e) => onSetNick(e.target.value)}
           />
-          <select value={color} onChange={(e) => onSetColor(e.target.value)}>
-            {availableColors.map((color_) =>
-              <option key={color_} value={color_}>{color_}</option>
-            )}
-          </select>
-          <select value={category} onChange={(e) => onSetCategory(e.target.value)}>
-            <option value="all">All</option>
-          </select>
-          <button type="submit" disabled={disableJoinin}>Join in</button>
+          <br />
+          <Button type="submit" disabled={disableJoinin}>
+            <FormattedMessage {...messages.joinIn} />
+          </Button>
         </form>
-      </div>
+      </InfoContainer>
     );
   }
 
