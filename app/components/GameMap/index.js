@@ -10,6 +10,8 @@ import startImg from 'assets/start.png';
 import endImg from 'assets/end.png';
 import RawField from 'components/Field';
 import RawSplitField from 'components/SplitField';
+import RawHouseField from 'components/HouseField';
+import RawSplitHouseField from 'components/SplitHouseField';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -61,6 +63,30 @@ const SplitField = ({ x, y, color1, color2, size }) => (
     </div>
 );
 
+const HouseField = ({ x, y, color, size }) => (
+    <div
+        style={{
+            position: 'absolute',
+            top: `${y}px`,
+            left: `${x}px`
+        }}
+    >
+        <RawHouseField color={color} size={`${size}px`} />
+    </div>
+);
+
+const SplitHouseField = ({ x, y, color1, color2, size }) => (
+    <div
+        style={{
+            position: 'absolute',
+            top: `${y}px`,
+            left: `${x}px`
+        }}
+    >
+        <RawSplitHouseField color1={color1} color2={color2} size={`${size}px`} />
+    </div>
+);
+
 const GameMap = ({ map, players }) => {
 
     const mapPlayers = players || null;
@@ -70,18 +96,14 @@ const GameMap = ({ map, players }) => {
     if (mapPlayers != null) {
         player1 = mapPlayers[0];
         player2 = mapPlayers[1];
-
-        console.log(player1.color);
-        console.log(player1.position);
     }
-
 
     const highestX = map.reduce((highest, { x }) => Math.max(highest, x), 0);
     const highestY = map.reduce((highest, { y }) => Math.max(highest, y), 0);
 
     const fieldSize = Math.min(window.innerHeight / highestY, window.innerWidth / highestX) * 0.80;
 
-    const fields = map.map(({ id, x, y }) => {
+    const fields = map.map(({ id, x, y, type }) => {
 
         let color = 'default';
         if (player1 != null && player2 != null) {
@@ -92,6 +114,31 @@ const GameMap = ({ map, players }) => {
 
             if (id == player2.position) {
                 color = player2.color;
+            }
+
+            if (type == 'question') {
+                if (id == player1.position && id == player2.position) {
+                    return (
+                        <SplitHouseField
+                            key={id}
+                            size={fieldSize}
+                            y={fieldSize * y}
+                            x={fieldSize * x}
+                            color1={player1.color}
+                            color2={player2.color}
+                        />
+                    );
+                } else {
+                    return (
+                        <HouseField
+                            key={id}
+                            size={fieldSize}
+                            y={fieldSize * y}
+                            x={fieldSize * x}
+                            color={color}
+                        />
+                    );
+                }
             }
 
             if (id == player1.position && id == player2.position) {
