@@ -12,10 +12,12 @@ export const ActionTypes = {
   SOCKET_EVENT_PLAYER_POSITION: '@@socket/EVENT_PLAYER_POSITION',
   SOCKET_EVENT_GAME_OVER: '@@socket/EVENT_GAME_OVER',
   SOCKET_EVENT_SET_DIFFICULTY: '@@socket/EVENT_SET_DIFFICULTY',
+  SOCKET_EVENT_JOIN_MODE: '@@socket/SOCKET_EVENT_JOIN_MODE',
   SOCKET_EMIT_LOGIN: '@@socket/EMIT_LOGIN',
   SOCKET_EMIT_ROLL_THE_DICE: '@@socket/EMIT_ROLL_THE_DICE',
   SOCKET_EMIT_SET_DIFFICULTY: '@@socket/EMIT_SET_DIFFICULTY',
   SOCKET_EMIT_ANSWER: '@@socket/EMIT_ANSWER',
+  SOCKET_EMIT_JOIN_MODE: '@@socket/EMIT_JOIN_MODE',
 };
 
 export default function createSocketMiddleware(createSocket) {
@@ -59,6 +61,14 @@ export default function createSocketMiddleware(createSocket) {
 
           case ActionTypes.SOCKET_EMIT_ANSWER: {
             socket.emit('answer', action.payload.answerId);
+            break;
+          }
+
+          case ActionTypes.SOCKET_EMIT_JOIN_MODE: {
+            socket.emit('mode', {
+              type: action.payload.room ? 'friend' : 'normal',
+              room: action.payload.room,
+            });
             break;
           }
 
@@ -119,4 +129,8 @@ function bindListeners(on, dispatch) {
   on('game-over', () => dispatch(({
     type: ActionTypes.SOCKET_EVENT_GAME_OVER,
   })));
+
+  on('mode', () => dispatch({
+    type: ActionTypes.SOCKET_EVENT_JOIN_MODE,
+  }));
 }
