@@ -12,7 +12,7 @@ export default defineMessages({
   },
   welcomeText: {
     id: 'app.components.LandingPage.welcomeText',
-    defaultMessage: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    defaultMessage: 'Are you interested in answering questions to compete with the other player? Then this is the right site for you! This is a project initiated by the EU which targets the cooperation of Czech and German students. With this game your are able to play against another players from all over the world. The goal of the game is to answer questions which mostly deal with Germany (Würzburg) and the Czech Republic (Brno). Enjoy the game!',
   },
   play: {
     id: 'app.components.LandingPage.play',

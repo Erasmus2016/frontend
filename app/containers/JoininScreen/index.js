@@ -115,6 +115,7 @@ export class JoininScreen extends React.PureComponent { // eslint-disable-line r
           <Input
             value={nick}
             type="text"
+            autofocus="autofocus"
             onChange={(e) => onSetNick(e.target.value)}
           />
           <br />
