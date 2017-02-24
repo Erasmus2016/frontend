@@ -41,11 +41,18 @@ const Card3 = styled(Card)`
   /*background-image: url(${card3});*/
 `;
 
-function QuestionScreen({ isQuestion, setDifficulty, onSetDifficulty, question, answers, difficulty, onSelectAnswer}) {
+function QuestionScreen({ isQuestion, setDifficulty, onSetDifficulty, question, answers, difficulty, onSelectAnswer, answer}) {
 
-  const diff = difficulty => () => onSetDifficulty(difficulty);
+  const diff = diff => () => {
+    console.log('difficulty: '+difficulty);
+    //if(difficulty != 0)
+      onSetDifficulty(diff)
+  };
 
-  const setAnswer = id => () => onSelectAnswer(id);
+  const setAnswer = id => (e) => {
+    e.preventDefault();
+    onSelectAnswer(id);
+  };
 
   const drawQuestion = (id) => {
     if(id != difficulty)
@@ -55,7 +62,7 @@ function QuestionScreen({ isQuestion, setDifficulty, onSetDifficulty, question, 
       <div>
           <h4>{question}</h4>
           <ol>
-            {answers.map((answer,i) => <li key={i} onClick={setAnswer(i)}>{answer}</li>)}
+            {answers.map((answer,i) => <li key={i} className={(i==answer) ? 'active':''} onClick={setAnswer(i)}>{answer}</li>)}
           </ol>
       </div>
     );

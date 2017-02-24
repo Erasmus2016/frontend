@@ -19,6 +19,7 @@ export const ActionTypes = {
   SOCKET_EMIT_ANSWER: '@@socket/EMIT_ANSWER',
   SET_DIFFICULTY: 'SET_DIFFICULTY',
   SOCKET_EMIT_JOIN_MODE: '@@socket/EMIT_JOIN_MODE',
+  SOCKET_EVENT_CORRECT_ANSWER: '@@socket/EVENT_CORRECT_ANSWER',
 };
 
 export default function createSocketMiddleware(createSocket) {
@@ -127,6 +128,14 @@ function bindListeners(on, dispatch) {
     type: ActionTypes.SOCKET_EVENT_PLAYER_POSITION,
     payload: { position },
   })));
+
+  on('correct-answer', (id) => {
+
+    dispatch(({
+      type: ActionTypes.SOCKET_EVENT_CORRECT_ANSWER,
+      payload: { id },
+    }))
+  });
 
   on('game-over', () => dispatch(({
     type: ActionTypes.SOCKET_EVENT_GAME_OVER,

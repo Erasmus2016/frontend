@@ -17,6 +17,7 @@ const GameData = Record({ // eslint-disable-line new-cap
   question: '',
   isQuestion: false,
   answers: [],
+  answer: null,
   questionImage: '',
   setDifficulty: false,
   difficulty: 0,
@@ -56,6 +57,12 @@ function gameReducer(state = initialState, action) {
 
     case ActionTypes.SET_DIFFICULTY:
       return state.setIn(['data', 'difficulty'], action.payload);
+
+    case ActionTypes.SOCKET_EVENT_CORRECT_ANSWER:
+     /* window.setTimeout(()=>{
+        state.setIn(['data', 'isQuestion'], false).setIn(['data', 'difficulty'], 0).setIn(['data', 'question'], '').setIn(['data', 'answers'], []).setIn(['data', 'questionImage'], '');
+      },2000);*/
+    return state.setIn(['data', 'answer'], action.payload.id)
 
     case ActionTypes.SOCKET_EVENT_QUESTION:
       return state.setIn(['data', 'question'], action.payload.question.question).setIn(['data', 'isQuestion'], true).setIn(['data', 'setDifficulty'], false).setIn(['data', 'answers'], action.payload.question.answers).setIn(['data', 'questionImage'], action.payload.question.image);

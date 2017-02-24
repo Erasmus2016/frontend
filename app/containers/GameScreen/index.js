@@ -36,6 +36,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
     question: PropTypes.string.isRequired,
     isQuestion: PropTypes.bool.isRequired,
     answers: PropTypes.array,
+    answer: PropTypes.number,
     difficulty: PropTypes.number,
   };
 
@@ -55,6 +56,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
       question,
       isQuestion,
       answers,
+      answer,
       setDifficulty,
       difficulty,
     } = this.props;
@@ -74,7 +76,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
             <GameMap map={map} players={players} />
             {console.log(question)}
             {console.log(answers)}
-            {isQuestionScreen ? <Question question={question} answers={answers} difficulty={difficulty} setDifficulty={setDifficulty} onSelectAnswer={onSelectAnswer} onSetDifficulty={onSetDifficulty} /> : ''}
+            {isQuestionScreen ? <Question question={question} answers={answers} difficulty={difficulty} setDifficulty={setDifficulty} onSelectAnswer={onSelectAnswer} onSetDifficulty={onSetDifficulty} answer={answer} /> : ''}
             <DiceBox
               canRollTheDice={canRollTheDice}
               diceResult={diceResult}
