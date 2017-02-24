@@ -45,12 +45,12 @@ const selectGameScreen = () => createSelector(
   selectCanRollTheDice(),
   selectDiceResult(),
   selectPlayers(),
-  selectModeSent(),
   selectSetDifficulty(),
   selectQuestion(),
   selectIsQuestion(),
   selectAnswers(),
   selectDifficulty(),
+  selectModeSent(),
   (canLogin, map, canRollTheDice, diceResult, players, setDifficulty, question, isQuestion, answers, difficulty, modeSent) => ({
     canLogin,
     map: map ? map.toJS() : null,
