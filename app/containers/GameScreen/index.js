@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import selectGameScreen from './selectors';
 import JoininScreen from 'containers/JoininScreen';
+import Question from 'components/Question';
 import Loading from './Loading';
 import GameMap from 'components/GameMap';
 import DiceBox from 'components/DiceBox';
@@ -20,8 +21,15 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
     map: PropTypes.array,
     players: PropTypes.array,
     canRollTheDice: PropTypes.bool.isRequired,
+    onSelectAnswer: PropTypes.func.isRequired,
     diceResult: PropTypes.number,
     onRollTheDice: PropTypes.func.isRequired,
+    onSetDifficulty: PropTypes.func.isRequired,
+    setDifficulty: PropTypes.bool.isRequired,
+    question: PropTypes.string.isRequired,
+    isQuestion: PropTypes.bool.isRequired,
+    answers: PropTypes.array,
+    difficulty: PropTypes.number,
   };
 
   render() {
@@ -32,11 +40,20 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
       canRollTheDice,
       diceResult,
       onRollTheDice,
+      onSetDifficulty,
+      onSelectAnswer,
+      question,
+      isQuestion,
+      answers,
+      setDifficulty,
+      difficulty,
     } = this.props;
 
     const isGame = Boolean(map);
     const isJoininScreen = canLogin && !isGame;
     const isLoading = !isJoininScreen && !isGame;
+    const isQuestionScreen = isQuestion || setDifficulty;
+
 
     return (
       <div>
@@ -44,12 +61,15 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
         {isLoading ? <Loading /> : ''}
         {isGame ?
           <div>
+            <GameMap map={map} players={players} />
+            {console.log(question)}
+            {console.log(answers)}
+            {isQuestionScreen ? <Question question={question} answers={answers} difficulty={difficulty} setDifficulty={setDifficulty} onSelectAnswer={onSelectAnswer} onSetDifficulty={onSetDifficulty} /> : ''}
             <DiceBox
               canRollTheDice={canRollTheDice}
               diceResult={diceResult}
               onRollTheDice={onRollTheDice}
             />
-            <GameMap map={map} players={players} />
           </div>
         : ''}
       </div>
@@ -61,6 +81,8 @@ const mapStateToProps = selectGameScreen();
 
 const mapDispatchToProps = (dispatch) => ({
   onRollTheDice: () => dispatch({ type: ActionTypes.SOCKET_EMIT_ROLL_THE_DICE }),
+  onSelectAnswer: (id) => dispatch({type: ActionTypes.SOCKET_EMIT_ANSWER , payload:{id}}),
+  onSetDifficulty: (difficulty) => dispatch ({ type: ActionTypes.SOCKET_EMIT_SET_DIFFICULTY, payload:{difficulty}}),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);

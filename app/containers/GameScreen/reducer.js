@@ -14,6 +14,12 @@ const GameData = Record({ // eslint-disable-line new-cap
   canRollTheDice: false,
   diceResult: null,
   players: null,
+  question: '',
+  isQuestion: false,
+  answers: [],
+  questionImage: '',
+  setDifficulty: false,
+  difficulty: 0,
 });
 
 const initialState = fromJS({
@@ -44,6 +50,20 @@ function gameReducer(state = initialState, action) {
 
     case ActionTypes.SOCKET_EVENT_PLAYER_POSITION:
       return state.setIn(['data', 'players'], fromJS(action.payload.position).toList());
+
+    case ActionTypes.SOCKET_EVENT_SET_DIFFICULTY:
+      return state.setIn(['data', 'setDifficulty'], true);
+
+    case ActionTypes.SET_DIFFICULTY:
+      return state.setIn(['data', 'difficulty'], action.payload);
+
+    case ActionTypes.SOCKET_EVENT_QUESTION:
+      return state.setIn(['data', 'question'], action.payload.question.question).setIn(['data', 'isQuestion'], true).setIn(['data', 'setDifficulty'], false).setIn(['data', 'answers'], action.payload.question.answers).setIn(['data', 'questionImage'], action.payload.question.image);
+      /*
+       state.setIn(['data', 'answers'], action.payload.answers),
+       state.setIn(['data', 'isQuestion'], true),
+       state.setIn(['data', 'setDifficulty'], false),
+       state.setIn(['data', 'questionImage'], action.payload.image)*/
 
     default:
       return state;

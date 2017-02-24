@@ -16,6 +16,7 @@ export const ActionTypes = {
   SOCKET_EMIT_ROLL_THE_DICE: '@@socket/EMIT_ROLL_THE_DICE',
   SOCKET_EMIT_SET_DIFFICULTY: '@@socket/EMIT_SET_DIFFICULTY',
   SOCKET_EMIT_ANSWER: '@@socket/EMIT_ANSWER',
+  SET_DIFFICULTY: 'SET_DIFFICULTY',
 };
 
 export default function createSocketMiddleware(createSocket) {
@@ -31,6 +32,7 @@ export default function createSocketMiddleware(createSocket) {
         socket = createSocket();
         const on = socket.on.bind(socket);
         bindListeners(on, dispatch);
+        socket.emit('mode', {type:'normal'});
       }
 
       if (isConnected) {
@@ -53,12 +55,13 @@ export default function createSocketMiddleware(createSocket) {
           }
 
           case ActionTypes.SOCKET_EMIT_SET_DIFFICULTY: {
+            dispatch({type:ActionTypes.SET_DIFFICULTY, payload: action.payload.difficulty});
             socket.emit('set-difficulty', action.payload.difficulty);
             break;
           }
 
           case ActionTypes.SOCKET_EMIT_ANSWER: {
-            socket.emit('answer', action.payload.answerId);
+            socket.emit('answer', action.payload.id);
             break;
           }
 

@@ -12,8 +12,11 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 const Dice = styled.div`
-  width: 10vh;
-  height: 10vh;
+  top: 70vh;
+  left: 5vw;
+  position: relative;
+  width: 10vw;
+  height: 10vw;
   background-size: contain;
   background-repeat:no-repeat;
 `;
