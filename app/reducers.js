@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import gameReducer from 'containers/GameScreen/reducer';
 import joininReducer from 'containers/JoininScreen/reducer';
+import pickRoomReducer from 'containers/PickRoom/reducer';
 
 /*
  * routeReducer
@@ -47,5 +48,6 @@ export default function createReducer() {
     language: languageProviderReducer,
     game: gameReducer,
     joinin: joininReducer,
+    pickRoom: pickRoomReducer,
   });
 }

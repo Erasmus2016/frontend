@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-
+import { selectModeSent } from '../PickRoom/selectors';
 
 const selectCanLogin = () =>
   (state) => state.getIn(['game', 'data', 'canLogin'], false);
@@ -45,12 +45,13 @@ const selectGameScreen = () => createSelector(
   selectCanRollTheDice(),
   selectDiceResult(),
   selectPlayers(),
+  selectModeSent(),
   selectSetDifficulty(),
   selectQuestion(),
   selectIsQuestion(),
   selectAnswers(),
   selectDifficulty(),
-  (canLogin, map, canRollTheDice, diceResult, players, setDifficulty, question, isQuestion, answers, difficulty) => ({
+  (canLogin, map, canRollTheDice, diceResult, players, setDifficulty, question, isQuestion, answers, difficulty, modeSent) => ({
     canLogin,
     map: map ? map.toJS() : null,
     canRollTheDice,
@@ -60,7 +61,8 @@ const selectGameScreen = () => createSelector(
     question,
     isQuestion,
     answers,
-    difficulty
+    difficulty,
+    pickMode: !modeSent,
   })
 );
 

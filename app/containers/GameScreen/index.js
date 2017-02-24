@@ -12,6 +12,7 @@ import Question from 'components/Question';
 import Loading from './Loading';
 import GameMap from 'components/GameMap';
 import DiceBox from 'components/DiceBox';
+import PickRoom from 'containers/PickRoom';
 import { ActionTypes } from 'utils/socketMiddleware';
 
 export class GameScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -20,6 +21,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
     canLogin: PropTypes.bool.isRequired,
     map: PropTypes.array,
     players: PropTypes.array,
+    pickMode: PropTypes.bool,
     canRollTheDice: PropTypes.bool.isRequired,
     onSelectAnswer: PropTypes.func.isRequired,
     diceResult: PropTypes.number,
@@ -37,6 +39,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
       canLogin,
       map,
       players,
+      pickMode,
       canRollTheDice,
       diceResult,
       onRollTheDice,
@@ -51,9 +54,9 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
 
     const isGame = Boolean(map);
     const isJoininScreen = canLogin && !isGame;
-    const isLoading = !isJoininScreen && !isGame;
+    const isPickScreen = pickMode;
+    const isLoading = !isJoininScreen && !isGame && !isPickScreen;
     const isQuestionScreen = isQuestion || setDifficulty;
-
 
     return (
       <div>
@@ -72,6 +75,7 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
             />
           </div>
         : ''}
+        {isPickScreen ? <PickRoom /> : ''}
       </div>
     );
   }
