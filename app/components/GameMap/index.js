@@ -18,7 +18,8 @@ import messages from './messages';
 
 const MapContainer = styled.div`
     position: absolute;
-    top: 10vh;
+    /*top: 10vh; */
+    top: -5vh; /* Fix for vertical alignment of the map. */
     left: 50vw;
     transform: translateX(-50%);
 `;
