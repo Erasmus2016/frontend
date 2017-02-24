@@ -6,6 +6,7 @@
 
 import { Map, Record, List, fromJS } from 'immutable';
 import { ActionTypes } from 'utils/socketMiddleware';
+import { HIDE_ANSWER } from './constants';
 
 const GameData = Record({ // eslint-disable-line new-cap
   canLogin: false,
@@ -59,10 +60,14 @@ function gameReducer(state = initialState, action) {
       return state.setIn(['data', 'difficulty'], action.payload);
 
     case ActionTypes.SOCKET_EVENT_CORRECT_ANSWER:
-     /* window.setTimeout(()=>{
-        state.setIn(['data', 'isQuestion'], false).setIn(['data', 'difficulty'], 0).setIn(['data', 'question'], '').setIn(['data', 'answers'], []).setIn(['data', 'questionImage'], '');
-      },2000);*/
-    return state.setIn(['data', 'answer'], action.payload.id)
+      return state.setIn(['data', 'answer'], action.payload.id);
+
+    case HIDE_ANSWER:
+      return state.setIn(['data', 'isQuestion'], false)
+                   .setIn(['data', 'difficulty'], 0)
+                   .setIn(['data', 'question'], '')
+                   .setIn(['data', 'answers'], [])
+                   .setIn(['data', 'questionImage'], '');
 
     case ActionTypes.SOCKET_EVENT_QUESTION:
       return state.setIn(['data', 'question'], action.payload.question.question).setIn(['data', 'isQuestion'], true).setIn(['data', 'setDifficulty'], false).setIn(['data', 'answers'], action.payload.question.answers).setIn(['data', 'questionImage'], action.payload.question.image);
