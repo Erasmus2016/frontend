@@ -14,6 +14,11 @@ import GameMap from 'components/GameMap';
 import DiceBox from 'components/DiceBox';
 import PickRoom from 'containers/PickRoom';
 import { ActionTypes } from 'utils/socketMiddleware';
+import styled from 'styled-components';
+
+const headline = styled.h1`
+  
+`;
 
 export class GameScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -33,6 +38,8 @@ export class GameScreen extends React.PureComponent { // eslint-disable-line rea
     answers: PropTypes.array,
     difficulty: PropTypes.number,
   };
+
+
 
   render() {
     const {

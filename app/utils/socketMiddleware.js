@@ -34,7 +34,6 @@ export default function createSocketMiddleware(createSocket) {
         socket = createSocket();
         const on = socket.on.bind(socket);
         bindListeners(on, dispatch);
-        socket.emit('mode', {type:'normal'});
       }
 
       if (isConnected) {
