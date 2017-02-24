@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-npm i && npm run start:prod
+npm i && npm run start:production
