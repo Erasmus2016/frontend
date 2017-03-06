@@ -33,6 +33,7 @@ const DiceOff = styled(Dice)`
 const DiceResult = styled.div`
   font-size:5vw;
   color:#fcc2d8;
+  top: -5vw;
   position:relative;
   text-shadow: 0px 0px 17px rgba(255, 52, 132, 1);
   font-family: beon;
