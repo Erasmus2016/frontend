@@ -12,6 +12,7 @@ import RawField from 'components/Field';
 import RawSplitField from 'components/SplitField';
 import RawHouseField from 'components/HouseField';
 import RawSplitHouseField from 'components/SplitHouseField';
+import RawJumpField from 'components/JumpField';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -88,6 +89,18 @@ const SplitHouseField = ({ x, y, color1, color2, size }) => (
     </div>
 );
 
+const JumpField = ({ x, y, color, size }) => (
+    <div
+        style={{
+            position: 'absolute',
+            top: `${y}px`,
+            left: `${x}px`
+        }}
+    >
+        <RawJumpField color={color} size={`${size}px`} />
+    </div>
+);
+
 const GameMap = ({ map, players }) => {
 
     const mapPlayers = players || null;
@@ -104,7 +117,10 @@ const GameMap = ({ map, players }) => {
 
     const fieldSize = Math.min(window.innerHeight / highestY, window.innerWidth / highestX) * 0.80;
 
-    const fields = map.map(({ id, x, y, type }) => {
+    const fields = map.map(({ id, x, y, type, jumpDestinationId = false }) => {
+
+        console.log(type);
+        console.log(jumpDestinationId);
 
         let color = 'default';
         if (player1 != null && player2 != null) {
@@ -140,6 +156,18 @@ const GameMap = ({ map, players }) => {
                         />
                     );
                 }
+            }
+
+            if (type == 'jump') {
+                return (
+                    <JumpField
+                        key={id}
+                        size={fieldSize}
+                        y={fieldSize * y}
+                        x={fieldSize * x}
+                        color={color}
+                    />
+                );
             }
 
             if (id == player1.position && id == player2.position) {
