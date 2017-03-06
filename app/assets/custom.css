@@ -1,5 +1,11 @@
 body {
     background-image: url(background.png);
+
+}
+
+@font-face {
+    font-family: beon;
+    src: url(beon-webfont.woff);
 }
 
 #question{
