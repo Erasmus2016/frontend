@@ -20,6 +20,7 @@ const QuestionContainer = styled(InfoContainer)`
     text-align:center;
 `;
 
+
 const Card = styled.div`
     width: 25%;
     height: 90%;

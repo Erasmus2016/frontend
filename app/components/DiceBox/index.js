@@ -15,27 +15,37 @@ const Dice = styled.div`
   top: 70vh;
   left: 5vw;
   position: relative;
-  width: 10vw;
-  height: 10vw;
+  width: 7vw;
+  height: 7vw;
   background-size: contain;
   background-repeat:no-repeat;
 `;
 
 const DiceOn = styled(Dice)`
   background-image: url(${diceOn});
+  cursor: pointer;
 `;
 
 const DiceOff = styled(Dice)`
   background-image: url(${diceOff});
 `;
 
+const DiceResult = styled.div`
+  font-size:5vw;
+  color:#fcc2d8;
+  position:relative;
+  text-shadow: 0px 0px 17px rgba(255, 52, 132, 1);
+  font-family: beon;
+`;
+
+
 function DiceBox({ onRollTheDice, canRollTheDice, diceResult }) {
   return (
     <div>
-      <FormattedMessage {...messages.header} />
-      Dice result: [{diceResult}]
+      {/* <FormattedMessage {...messages.header} />*/}
+      {/*Dice result: [{diceResult}]*/}
 
-      {!canRollTheDice ? <DiceOff /> : <DiceOn onClick={onRollTheDice} />}
+      {!canRollTheDice ? <DiceOff>{diceResult > 0 ? <DiceResult>{diceResult}</DiceResult> : ''}</DiceOff>   : <DiceOn onClick={onRollTheDice} />}
     </div>
   );
 }

@@ -5,7 +5,7 @@ body {
 
 @font-face {
     font-family: beon;
-    src: url(beon-webfont.woff);
+    src: url(beon-webfont.woff) format("woff");
 }
 
 #question{

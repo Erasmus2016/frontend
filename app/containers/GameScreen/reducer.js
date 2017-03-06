@@ -23,9 +23,16 @@ const GameData = Record({ // eslint-disable-line new-cap
   setDifficulty: false,
   difficulty: 0,
 });
+const PlayerPicks = Record({
+  nick: '',
+  color: 'red',
+  category: 'all',
+  hadLogin: false,
+});
 
 const initialState = fromJS({
   data: new GameData(),
+  joinData:PlayerPicks(),
 });
 
 function gameReducer(state = initialState, action) {
@@ -76,7 +83,6 @@ function gameReducer(state = initialState, action) {
        state.setIn(['data', 'isQuestion'], true),
        state.setIn(['data', 'setDifficulty'], false),
        state.setIn(['data', 'questionImage'], action.payload.image)*/
-
     default:
       return state;
   }

@@ -38,6 +38,9 @@ const selectPlayers = () =>
 const selectCorrectAnswer = () =>
   (state) => state.getIn(['game', 'data', 'answer']);
 
+const selectPlayerColor = () =>
+  (state) => state.getIn(['game', 'joinData', 'color']);
+
 /**
  * Default selector used by GameScreen
  */
@@ -55,7 +58,8 @@ const selectGameScreen = () => createSelector(
   selectDifficulty(),
   selectModeSent(),
   selectCorrectAnswer(),
-  (canLogin, map, canRollTheDice, diceResult, players, setDifficulty, question, isQuestion, answers, difficulty, modeSent, answer) => ({
+  selectPlayerColor(),
+  (canLogin, map, canRollTheDice, diceResult, players, setDifficulty, question, isQuestion, answers, difficulty, modeSent, answer, color) => ({
     canLogin,
     map: map ? map.toJS() : null,
     canRollTheDice,
@@ -68,6 +72,7 @@ const selectGameScreen = () => createSelector(
     difficulty,
     pickMode: !modeSent,
     answer,
+    color,
   })
 );
 
@@ -85,4 +90,5 @@ export {
   selectAnswers,
   selectDifficulty,
   selectCorrectAnswer,
+  selectPlayerColor,
 };
