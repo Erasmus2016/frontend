@@ -13,6 +13,7 @@ import RawSplitField from 'components/SplitField';
 import RawHouseField from 'components/HouseField';
 import RawSplitHouseField from 'components/SplitHouseField';
 import RawJumpField from 'components/JumpField';
+import RawSplitJumpField from 'components/SplitJumpField';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
@@ -101,6 +102,18 @@ const JumpField = ({ x, y, color, size }) => (
     </div>
 );
 
+const SplitJumpField = ({ x, y, color1, color2, size }) => (
+    <div
+        style={{
+            position: 'absolute',
+            top: `${y}px`,
+            left: `${x}px`
+        }}
+    >
+        <RawSplitJumpField color1={color1} color2={color2} size={`${size}px`} />
+    </div>
+);
+
 const GameMap = ({ map, players }) => {
 
     const mapPlayers = players || null;
@@ -159,15 +172,28 @@ const GameMap = ({ map, players }) => {
             }
 
             if (type == 'jump') {
-                return (
-                    <JumpField
-                        key={id}
-                        size={fieldSize}
-                        y={fieldSize * y}
-                        x={fieldSize * x}
-                        color={color}
-                    />
-                );
+                if (id == player1.position && id == player2.position) {
+                    return (
+                        <SplitJumpField
+                            key={id}
+                            size={fieldSize}
+                            y={fieldSize * y}
+                            x={fieldSize * x}
+                            color1={player1.color}
+                            color2={player2.color}
+                        />
+                    );
+                } else {
+                    return (
+                        <JumpField
+                            key={id}
+                            size={fieldSize}
+                            y={fieldSize * y}
+                            x={fieldSize * x}
+                            color={color}
+                        />
+                    );
+                }
             }
 
             if (id == player1.position && id == player2.position) {
